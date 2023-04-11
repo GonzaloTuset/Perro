@@ -4,14 +4,14 @@ const {
   API, KEY
 } = process.env
 
-const getBreed = async () => {
+const getDogs = async () => {
   return await axios.get(`${API}?api_key=${KEY}`)
     .then(response => {
-      const breed = response.data.map(raza => ({ raza: raza.name }))
+      const breed = response.data.map(raza => ({ raza: raza.name, id: raza.id }))
       if (breed.lenght === 0) {
         throw new Error('Sin valores')
       }
       return breed
     })
 }
-module.exports = getBreed
+module.exports = getDogs
