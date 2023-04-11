@@ -4,6 +4,13 @@ const { API, KEY } = process.env
 
 const getBreedById = async (id) => {
   return await axios.get(`${API}/${id}?api_key=${KEY}`)
-    .then(response => response.data)
+    .then(response => {
+      const data = response.data
+
+      if (data.lenght === 0) {
+        throw new Error(`no existe Raza con ${id}`)
+      }
+      return data
+    })
 }
 module.exports = getBreedById
