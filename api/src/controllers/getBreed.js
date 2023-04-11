@@ -1,0 +1,17 @@
+require('dotenv').config()
+const axios = require('axios')
+const {
+  API, KEY
+} = process.env
+
+const getBreed = async () => {
+  return await axios.get(`${API}?api_key=${KEY}`)
+    .then(response => {
+      const breed = response.data.map(raza => ({ raza: raza.name }))
+      if (breed.lenght === 0) {
+        throw new Error('Sin valores')
+      }
+      return breed
+    })
+}
+module.exports = getBreed
