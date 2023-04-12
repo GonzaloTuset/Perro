@@ -8,7 +8,7 @@ const getDogs = async () => {
   return await axios.get(`${API}?api_key=${KEY}`)
     .then(response => {
       const breed = response.data.map(raza => ({ raza: raza.name }))
-      if (breed.lenght === 0) {
+      if (breed.length === 0) {
         throw new Error('Sin valores')
       }
       return breed

@@ -7,7 +7,7 @@ const getBreedById = async (id) => {
     .then(response => {
       const data = response.data
 
-      if (data.lenght === 0) {
+      if (data.length === 0) {
         throw new Error(`no existe Raza con ${id}`)
       }
       return data

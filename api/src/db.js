@@ -5,6 +5,8 @@ const path = require('path')
 const {
   DB_USER, DB_PASSWORD, DB_HOST
 } = process.env
+const dogFunction = require('./models/Dog')
+const tempFunction = require('./models/Temperaments')
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -30,6 +32,9 @@ sequelize.models = Object.fromEntries(capsEntries)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
+// para poder usar findOrCreate/bulk create
+dogFunction(sequelize)
+tempFunction(sequelize)
 const { Dog, Temperaments } = sequelize.models
 
 // Aca vendrian las relaciones
