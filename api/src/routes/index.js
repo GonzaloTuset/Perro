@@ -1,10 +1,20 @@
 const { Router } = require('express')
 const getDogs = require('../controllers/getDogs')
 const getBreedById = require('../controllers/getBreedById')
+const getDogsName = require('../controllers/getDogsName')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router()
+router.get('/dogs/', async (req, res) => {
+  const { name } = req.query
+  try {
+    const data = name ? await getDogsName(name) : await getDogsName()
+    res.status(200).json(data)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+})
 
 router.get('/dogs', async (req, res) => {
   try {
