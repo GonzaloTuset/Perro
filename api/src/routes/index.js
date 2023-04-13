@@ -3,6 +3,7 @@ const getDogs = require('../controllers/getDogs')
 const getBreedById = require('../controllers/getBreedById')
 const getDogsName = require('../controllers/getDogsName')
 const getTemperaments = require('../controllers/getTemperaments')
+const postDogs = require('../controllers/postDogs')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -40,6 +41,21 @@ router.get('/dogs/:id', async (req, res) => {
   try {
     const data = await getBreedById(id)
     res.status(200).json(data)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+})
+router.post('/dogs', async (req, res) => {
+  const { name, height, weight, years, temperament } = req.body
+  try {
+    await postDogs(name, height, weight, years)
+    res.status(200).json({
+      name,
+      height,
+      weight,
+      years,
+      temperament
+    })
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
