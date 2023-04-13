@@ -46,12 +46,13 @@ router.get('/dogs/:id', async (req, res) => {
   }
 })
 router.post('/dogs', async (req, res) => {
-  const { name, height, weight, years, temperament } = req.body
+  const { name, height, image, weight, years, temperament } = req.body
   try {
-    await postDogs(name, height, weight, years)
+    await postDogs(name, height, image, weight, years, temperament)
     res.status(200).json({
       name,
       height,
+      image,
       weight,
       years,
       temperament
