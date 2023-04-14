@@ -5,6 +5,7 @@ const {
   API, KEY
 } = process.env
 
+
 const getDogs = async () => {
 
   return await axios.get(`${API}?api_key=${KEY}`)
