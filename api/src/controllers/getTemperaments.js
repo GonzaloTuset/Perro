@@ -6,7 +6,7 @@ const { Temperaments } = require('../db')
 const getTemperaments = async () => {
   return await axios.get(`${API}?api_key=${KEY}`)
     .then(async (response) => {
-      const temp = response.data.map(temperament => ({ Name: temperament.temperament || ' ' }))
+      const temp = response.data.map(temperament => ({ name: temperament.temperament || ' ' }))
       const validTemp = temp.filter((temperament) => temperament.temp !== null && temperament.temp !== ' ')
       if (validTemp.length === 0) {
         throw new Error('Do not exist valid temperaments')
