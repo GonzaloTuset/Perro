@@ -6,7 +6,7 @@ const {
 } = process.env
 const { Dog, Temperaments } = require('../db')
 
-const getDogs = async () => {
+const getDogs = async (id) => {
   const dogsFromDB = await Dog.findbyPk(id, {
     include: {
       model: Temperaments,

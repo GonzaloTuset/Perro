@@ -21,3 +21,4 @@ const postDogs = async (name, height, weight, image, years, temperaments) => {
 }
 
 module.exports = postDogs
+ 
