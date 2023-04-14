@@ -18,7 +18,7 @@ const getTemperaments = async () => {
       const validTemp = oneTemp.filter(temperament => temperament !== 'no ones here')
         .map(temperament => ({ name: temperament }))
       if (validTemp.length === 0) {
-        throw new Error("Don't exist valid temperaments")
+        throw new Error("no existe temperamentos valido")
       }
       await Temperaments.bulkCreate(validTemp)
       return validTemp

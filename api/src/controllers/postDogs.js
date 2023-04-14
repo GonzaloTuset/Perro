@@ -5,6 +5,9 @@ const postDogs = async (name, height, weight, image, years, temperaments) => {
     if (!name || !height || !weight || !image || !years || !temperaments) {
       throw new Error('faltan datos')
     }
+    if (!temperaments.length) {
+      temperaments = ['desconocido'];
+    }
     const newDog = await Dog.create({ name, height, image, weight, years })
     const temp = await Temperaments.findAll({
       where: {
