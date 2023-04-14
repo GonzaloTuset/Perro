@@ -2,6 +2,9 @@ const { Sequelize } = require('sequelize')
 const { Dog, Temperaments } = require('../db')
 const postDogs = async (name, height, weight, image, years, temperaments) => {
   try {
+    if (!name || !height || !weight || !image || !years || !temperaments) {
+      throw new Error('faltan datos')
+    }
     const newDog = await Dog.create({ name, height, image, weight, years })
     const temp = await Temperaments.findAll({
       where: {
@@ -9,7 +12,8 @@ const postDogs = async (name, height, weight, image, years, temperaments) => {
        { [Sequelize.Op.in]: temperaments }
       }
     })
-    await newDog.addTemperaments(temp)
+    await newDog.setTemperaments(temp)
+
     return newDog
   } catch (error) {
     throw new Error(error)
