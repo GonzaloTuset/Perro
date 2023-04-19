@@ -25,8 +25,6 @@ const Detail = () => {
     <h2>weight:{dogDetail.weight?(dogDetail.weight.metric):('nada')}</h2>
     <h2>temperament:{dogDetail.temperaments}{dogDetail.temperament}</h2>
     <h2>life span:{dogDetail.life_span}{dogDetail.years}</h2>
-
-
    </div>
     
   )
