@@ -32,7 +32,7 @@ for (let i = 1; i <= Math.ceil(selector.length / dogsPerPage); i++) {
     {
   getCurrentDogs().map(({id,image,name,temperament,temperaments,weight})=>{
     return(
-      <NavLink to='/Detail'>
+      <NavLink to={`/Detail/${id}`} >
         <div key={id}>
           <img src={image}/>
           <h1>{name}</h1>
