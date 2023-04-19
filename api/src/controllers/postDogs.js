@@ -1,18 +1,18 @@
 const { Sequelize } = require('sequelize')
 const { Dog, Temperaments } = require('../db')
-const postDogs = async (name, height, weight, image, years, temperaments) => {
+const postDogs = async (name, height, weight, image, years, temperament) => {
   try {
-    if (!name || !height || !weight || !image || !years || !temperaments) {
+    if (!name || !height || !weight || !image || !years || !temperament) {
       throw new Error('faltan datos')
     }
-    if (!temperaments.length) {
-      temperaments = ['desconocido'];
+    if (!temperament.length) {
+      temperament = ['desconocido'];
     }
     const newDog = await Dog.create({ name, height, image, weight, years })
     const temp = await Temperaments.findAll({
       where: {
         name:
-       { [Sequelize.Op.in]: temperaments }
+       { [Sequelize.Op.in]: temperament }
       }
     })
     await newDog.setTemperaments(temp)
