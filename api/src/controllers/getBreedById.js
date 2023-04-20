@@ -10,6 +10,7 @@ const getBreedById = async (id) => {
   await axios.get(`${API}/${id}?api_key=${KEY}`)
     .then(response => {
       dogsApi = response.data
+      
     })
     if(dogsApi){
      obj={
@@ -19,7 +20,8 @@ const getBreedById = async (id) => {
         height: dogsApi.height,
         weight: dogsApi.weight,
         years: dogsApi.life_span,
-        temperaments: dogsApi.temperaments
+        temperaments: dogsApi.temperament,
+        reference: dogsApi.reference_image_id
       }
     }
 
@@ -32,13 +34,13 @@ const getBreedById = async (id) => {
       }
     })
        obj = {
-          id:dogsFromDb.id,
+          id: dogsFromDb.id,
           name: dogsFromDb.name,
           image: dogsFromDb.image,
           height: dogsFromDb.height,
           weight: dogsFromDb.weight,
           years: dogsFromDb.years,
-          temperaments:dogsFromDb.temperaments.map(temp=>temp.name)
+          temperaments: dogsFromDb.temperaments.map(temp=>temp.name)
       }
   }
   return obj
