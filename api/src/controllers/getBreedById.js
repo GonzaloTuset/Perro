@@ -45,7 +45,7 @@ const getBreedById = async (id) => {
     else if(!dogsFromDb){
       return dogsApi
     }
-      if (data.length === 0) {
+      if (!dogsFromDb && !dogsApi) {
         throw new Error(`no existe Raza con ${id}`)
       }
       
