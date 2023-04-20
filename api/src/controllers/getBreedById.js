@@ -4,50 +4,44 @@ const { Dog, Temperaments } = require('../db')
 const { API, KEY } = process.env
 
 const getBreedById = async (id) => {
-  const dogsFromDb = await Dog.findByPk(id, {
-    include: {
-      model: Temperaments,
-      attributes: ['name'],
-      through: { attributes: [] }
-    }
-  })
-  
+
+  let obj= {}
   let dogsApi;
   await axios.get(`${API}/${id}?api_key=${KEY}`)
     .then(response => {
       dogsApi = response.data
     })
-    if(dogsFromDb && dogsApi){
-      const dogsDb = {
-        id:dogsFromDb.id,
-        name: dogsFromDb.name,
-        image: dogsFromDb.image,
-        height: dogsFromDb.height,
-        weight: dogsFromDb.weight,
-        years: dogsFromDb.years,
-        temperaments:dogsFromDb.temperaments.map(temp=>temp.name)
+    if(dogsApi){
+     obj={
+        id: dogsApi.id,
+        name: dogsApi.name,
+        image: dogsApi.image,
+        height: dogsApi.height,
+        weight: dogsApi.weight,
+        years: dogsApi.life_span,
+        temperaments: dogsApi.temperaments
+      }
+    }
 
+  if(id.length >= 4){
+    const dogsFromDb = await Dog.findByPk(id, {
+      include: {
+        model: Temperaments,
+        attributes: ['name'],
+        through: { attributes: [] }
       }
-      return{dogsApi, dogsDb}
-    }
-    else if(!dogsApi){
-      const dogsDbOnly = {
-        id:dogsFromDb.id,
-        name: dogsFromDb.name,
-        image: dogsFromDb.image,
-        height: dogsFromDb.height,
-        weight: dogsFromDb.weight,
-        years: dogsFromDb.years,
-        temperaments:dogsFromDb.temperaments.map(temp=>temp.name)
+    })
+       obj = {
+          id:dogsFromDb.id,
+          name: dogsFromDb.name,
+          image: dogsFromDb.image,
+          height: dogsFromDb.height,
+          weight: dogsFromDb.weight,
+          years: dogsFromDb.years,
+          temperaments:dogsFromDb.temperaments.map(temp=>temp.name)
       }
-      return dogsDbOnly
-    }
-    else if(!dogsFromDb){
-      return dogsApi
-    }
-      if (!dogsFromDb && !dogsApi) {
-        throw new Error(`no existe Raza con ${id}`)
-      }
+  }
+  return obj
       
     
 }
