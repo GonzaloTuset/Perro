@@ -19,7 +19,7 @@ const Detail = () => {
     </header>
    
     <h2>id:{dogDetail.id}</h2>
-    <img src={dogDetail.image} alt='img'/>
+    <img src={dogDetail.image?(dogDetail.image.url):('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Missing_dog_photo.svg/1165px-Missing_dog_photo.svg.png')} alt='img'/>
     <h2>name:{dogDetail.name}</h2>
     <h2>height:{dogDetail.height?(dogDetail.height.metric):('nada')}</h2>
     <h2>weight:{dogDetail.weight?(dogDetail.weight.metric):('nada')}</h2>
