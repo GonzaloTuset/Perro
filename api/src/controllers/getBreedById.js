@@ -17,8 +17,8 @@ const getBreedById = async (id) => {
         id: dogsApi.id,
         name: dogsApi.name,
         image: dogsApi.image,
-        height: dogsApi.height,
-        weight: dogsApi.weight,
+        height: dogsApi.height.imperial,
+        weight: dogsApi.weight.imperial,
         years: dogsApi.life_span,
         temperaments: dogsApi.temperament,
         reference: dogsApi.reference_image_id
