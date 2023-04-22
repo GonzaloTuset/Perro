@@ -25,13 +25,13 @@ const getDogs = async () => {
   }));
   const apiDog = await axios.get(`${API}?api_key=${KEY}`)
     .then(response => {
-      const breeds = response.data.map(({id,image,name,temperament,weight}) => ({ 
+      const breeds = response.data.map(({id,image,name,temperament,weight}) => { 
         id,
         image:image.url, 
         name, 
         temperament, 
         weight:weight.imperial 
-      }))
+      })
       if (breeds.length === 0) {
         throw new Error('Sin valores');
       }

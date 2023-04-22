@@ -19,9 +19,21 @@ const getDogsName = async (name) => {
   });
 
   const apiResponse = await axios.get(`${API}/search?q=${name}&api_key=${KEY}`)
-  const apiDogs = apiResponse.data
+  .then(response => {
+    const dog = response.data.map(({id,reference_image_id,name,temperament,weight,height})=>({
+      id,
+      reference_image_id,
+      name,
+      temperament,
+      weight:weight.imperial,
+      height:height.imperial
 
-  const dogs = dbDogs.concat(apiDogs)
+    }))
+    return dog
+  })
+  
+
+  const dogs = dbDogs.concat(apiResponse)
 
   if (dogs.length === 0) {
     throw new Error('no se encontraron perros con ese nombre')

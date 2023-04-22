@@ -1,9 +1,10 @@
 import {
-  FETCH_DATA_SUCCESS
+  FETCH_DATA_SUCCESS,
+  FETCH_DATA_NAME
 } from './actions';
 
 const initialState = {
-  dogs:[]
+  dogs:[],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const rootReducer = (state = initialState, action) => {
       ...state,
       dogs:[...action.payload]
     }
+    case FETCH_DATA_NAME:
+      return{
+        ...state,
+        dogs:[...action.payload]
+      }
     default:
       return { ...state };
   

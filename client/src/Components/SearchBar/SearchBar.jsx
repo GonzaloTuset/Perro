@@ -1,15 +1,18 @@
-import { useState } from "react";
-const SearchBar = ({ onSearch }) => {
-  const [searchName, setSearchName] = useState("");
+import { useDispatch } from "react-redux";
+import { fetchDog } from "../../redux/actions";
 
+const SearchBar = () => {
+  const dispatch = useDispatch()
   const handleSearch = (event) => {
     event.preventDefault();
-    onSearch(searchName);
+    const search = event.currentTarget.search.value
+    dispatch(fetchDog(search))
+   console.log(search)
   }
 
   return (
     <form onSubmit={handleSearch}>
-      <input placeholder="Search a dog..." type="search" value={searchName} onChange={(e) => setSearchName(e.target.value)} />
+      <input placeholder="Search a dog..." type="search" name="search"/>
       <button type="submit">Search</button>
     </form>
   )
