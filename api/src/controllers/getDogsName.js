@@ -22,9 +22,9 @@ const getDogsName = async (name) => {
   .then(response => {
     const dog = response.data.map(({id,reference_image_id,name,temperament,weight,height})=>({
       id,
-      reference_image_id,
+      reference:reference_image_id,
       name,
-      temperament,
+      temperaments: temperament, 
       weight:weight.imperial,
       height:height.imperial
 
