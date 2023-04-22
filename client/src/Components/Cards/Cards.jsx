@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from '../../redux/actions';
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { formatImg } from "../../utils/FormatImg";
 const Cards = () => {
   const dispatch = useDispatch()
   const selector = useSelector((state) => state.dogs)
@@ -33,16 +34,13 @@ const Cards = () => {
       <div>
         {
         getCurrentDogs().
-        map(({ id, image, name, temperament, temperaments, weight }) => {
+        map(({ id, name, temperaments, weight, image, reference }) => {
           return (
             <NavLink to={`/Detail/${id}`}>
               <div key={id}>
-                <img src={image} />
+              <img src = { formatImg({image, reference}) } alt = 'img'/>
                 <h1>{name}</h1>
-                <h2>
-                  {temperament}
-                  {temperaments}
-                </h2>
+                <h2>{temperaments}</h2>
                 <h3>{weight}</h3>
               </div>
             </NavLink>
