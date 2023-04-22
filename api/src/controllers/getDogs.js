@@ -28,7 +28,7 @@ const getDogs = async () => {
         id,
         image:image.url, 
         name, 
-        temperament, 
+        temperaments: temperament, 
         weight:weight.imperial 
       }))
       if (breeds.length === 0) {
