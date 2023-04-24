@@ -4,6 +4,11 @@ const { API, KEY } = process.env
 const { Temperaments } = require('../db')
 
 const getTemperaments = async () => {
+  const temps = await Temperaments.findAll()
+  if(temps[0] !== undefined){
+    return temps
+  }
+
   return await axios.get(`${API}?api_key=${KEY}`)
     .then(async (response) => {
       const temp = response.data.flatMap(temperament => {
