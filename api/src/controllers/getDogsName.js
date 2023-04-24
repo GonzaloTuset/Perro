@@ -32,8 +32,14 @@ const getDogsName = async (name) => {
     return dog
   })
   
-
-  const dogs = dbDogs.concat(apiResponse)
+  const dogsDbFormat = dbDogs.map(dog => ({
+    id: dog.id,
+    image: dog.image,
+    weight: dog.weight,
+    height: dog.height,
+    temperaments: dog.temperaments.map(temp=>temp.name).join(', ')
+  }))
+  const dogs = dogsDbFormat.concat(apiResponse)
 
   if (dogs.length === 0) {
     throw new Error('no se encontraron perros con ese nombre')

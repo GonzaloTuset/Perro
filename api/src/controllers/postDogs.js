@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize')
 const { Dog, Temperaments } = require('../db')
 const postDogs = async (name, height, image, weight, years, temperament) => {
   try {
-    if (!name || !height || !weight || !image || !years || !temperament) {
+    if (!name || !height || !weight || !years || !temperament) {
       throw new Error('faltan datos')
     }
     if (!temperament.length) {
