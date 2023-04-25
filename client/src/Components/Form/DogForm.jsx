@@ -8,16 +8,20 @@ const CreateDogForm = () => {
     const newDog = {
       name: currentTarget.name.value,
       height: currentTarget.maxHeight.value + ' - ' + currentTarget.minHeight.value,
-      Weight: currentTarget.maxWeight.value + ' - ' + currentTarget.minWeight.value,
+      weight: currentTarget.maxWeight.value + ' - ' + currentTarget.minWeight.value,
       years: currentTarget.years.value,
-      temperaments: [currentTarget.temp.value]
+      temperaments: [currentTarget.temp.value],
+      image: currentTarget.image.value
     }
     console.log(newDog)
+    axios.post('http://localhost:3001/dogs',newDog)
   }
+  
   return(
     <div>
       <form onSubmit={handleSubmit}>
         <input placeholder='name' name='name'/>
+        <input placeholder='only Url Img' name='image'/>
         <input placeholder='max-height' name='maxHeight'/>
         <input placeholder='min-height' name='minHeight'/>
         <input placeholder='max-weight' name='maxWeight'/>
