@@ -1,3 +1,4 @@
+import CreateDogForm from "../../Form/DogForm"
 import NavBar from "../../NavBar/NavBar"
 const Form = () => {
   return (
@@ -5,7 +6,8 @@ const Form = () => {
     <header>
     <NavBar/>
    </header>
-   <h1>Form</h1>
+   <h1>Crea tu propio perro </h1>
+   <CreateDogForm/>
    </div>
     
   )

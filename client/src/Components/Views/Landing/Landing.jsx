@@ -1,7 +1,13 @@
+import { useEffect } from 'react'
 import  Style  from './Landing.module.css'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 const Landing = () =>{
-return (
+  useEffect(() => {
+    axios.get('http://localhost:3001/dogs')
+  }, []) 
+ 
+  return (
  <div className={Style.img}>
   <div>
     <Link to='/Home'>

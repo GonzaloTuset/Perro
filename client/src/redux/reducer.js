@@ -17,7 +17,7 @@ const rootReducer = (state = initialState, action) => {
     case FETCH_DATA_NAME:
       return{
         ...state,
-        dogs:[...action.payload]
+        dogs:[...action.payload],
       }
     default:
       return { ...state };

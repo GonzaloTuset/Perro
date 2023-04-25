@@ -24,7 +24,9 @@ export const fetchData = () => async dispatch => {
 export const fetchDog = (name) => async dispatch =>{
   try{
     const response = await axios.get(`http://localhost:3001/dogs/?name=${name}`)
+    console.log(response.data)
     dispatch(fetchDogsname(response.data))
+  
   }catch(error){
     console.log(error);
   }
