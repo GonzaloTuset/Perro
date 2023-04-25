@@ -7,8 +7,8 @@ const CreateDogForm = () => {
     const currentTarget = event.currentTarget
     const newDog = {
       name: currentTarget.name.value,
-      height: currentTarget.maxHeight.value + ' - ' + currentTarget.minHeight.value,
-      weight: currentTarget.maxWeight.value + ' - ' + currentTarget.minWeight.value,
+      height: currentTarget.minHeight.value + ' - ' + currentTarget.maxHeight.value,
+      weight: currentTarget.minWeight.value + ' - ' + currentTarget.maxWeight.value,
       years: currentTarget.years.value,
       temperaments: [currentTarget.temp.value],
       image: currentTarget.image.value
@@ -19,14 +19,14 @@ const CreateDogForm = () => {
   return(
     <div>
       <form onSubmit={handleSubmit}>
-        <input placeholder='name' name='name'/>
-        <input placeholder='only Url Img' name='image'/>
-        <input placeholder='max-height' name='maxHeight'/>
-        <input placeholder='min-height' name='minHeight'/>
-        <input placeholder='max-weight' name='maxWeight'/>
-        <input placeholder='min-weight' name='minWeight'/>
-        <input placeholder='years' name='years'/>
-        <input placeholder='temperaments' name='temp'/>
+        <input autoFocus  placeholder='name' type = 'text' name='name'/>
+        <input placeholder='only Url Img, max size: 30'type='url' name='image'/>
+        <input placeholder='min-height' autoComplete='off' type='number' name='minHeight' />
+        <input placeholder='max-height' autoComplete='off' type='number' name='maxHeight' />
+        <input placeholder='min-weight' autoComplete='off' type='number' name='minWeight' />
+        <input placeholder='max-weight' autoComplete='off' type='number' name='maxWeight' />
+        <input placeholder='years' autoComplete='off' type='number' name='years' />
+        <input placeholder='temperaments' name='temp' />
         <button>crear nueva raza</button>
       </form>
     </div>
