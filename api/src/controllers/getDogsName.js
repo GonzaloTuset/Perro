@@ -34,6 +34,7 @@ const getDogsName = async (name) => {
   
   const dogsDbFormat = dbDogs.map(dog => ({
     id: dog.id,
+    name: dog.name,
     image: dog.image,
     weight: dog.weight,
     height: dog.height,

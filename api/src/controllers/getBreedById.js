@@ -9,20 +9,21 @@ const getBreedById = async (id) => {
   let dogsApi;
   await axios.get(`${API}/${id}?api_key=${KEY}`)
     .then(response => {
-      dogsApi = response.data
-      
+      dogsApi = response.data 
     })
+    
     if(dogsApi){
      obj={
-        id: dogsApi.id,
-        name: dogsApi.name,
-        image: dogsApi.image,
-        height: dogsApi.height.imperial,
-        weight: dogsApi.weight.imperial,
-        years: dogsApi.life_span,
-        temperaments: dogsApi.temperament,
-        reference: dogsApi.reference_image_id
+        id: dogsApi?.id,
+        name: dogsApi?.name,
+        image: dogsApi?.image,
+        height: dogsApi?.height?.metric,
+        weight: dogsApi?.weight?.metric,
+        years: dogsApi?.life_span,
+        temperaments: dogsApi?.temperament,
+        reference: dogsApi?.reference_image_id
       }
+      console.log('PASSAS SESS')
     }
 
   if(id.length >= 4){
@@ -33,6 +34,7 @@ const getBreedById = async (id) => {
         through: { attributes: [] }
       }
     })
+   
        obj = {
           id: dogsFromDb.id,
           name: dogsFromDb.name,
