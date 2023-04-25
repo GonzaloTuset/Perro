@@ -13,7 +13,6 @@ const CreateDogForm = () => {
       temperaments: [currentTarget.temp.value],
       image: currentTarget.image.value
     }
-    console.log(newDog)
     axios.post('http://localhost:3001/dogs',newDog)
   }
   
