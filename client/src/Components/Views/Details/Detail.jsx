@@ -24,7 +24,7 @@ const Detail = () => {
     <img src = { formatImg(dogDetail) } alt = 'img'/>
     <h2>name: {dogDetail.name}</h2>
     <h2>height: { dogDetail.height ? dogDetail.height : ('nada')}</h2>
-    <h2>weight: {dogDetail.Weight ? dogDetail.Weight : ('nada')}</h2>
+    <h2>weight: {dogDetail.weight ? dogDetail.weight : ('nada')}</h2>
     <h2>temperament: {dogDetail.temperaments ? dogDetail.temperaments +' ': 'desconocido'}</h2>
     <h2>life span: {dogDetail.life_span}{dogDetail.years}</h2>
     </div>
