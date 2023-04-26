@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData, filterApi, filterDogBdd, sortAsc, sortWeight} from '../../redux/actions';
+import { fetchData, filterDogApi, filterDogBdd, sortAsc, sortWeight} from '../../redux/actions';
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { formatImg } from "../../utils/FormatImg";
@@ -42,7 +42,7 @@ const Cards = () => {
       dispatch(filterDogBdd())
     }
     if (event.target.value === 'api') {
-      dispatch(filterApi())
+      dispatch(filterDogApi())
     }
   }
 

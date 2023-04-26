@@ -66,7 +66,7 @@ export const filterDogApi=()=>async dispatch=>{
   try {
     const dogs = await axios.get('http://localhost:3001/dogs')
     console.log(dogs.data)
-    const dbDog = dogs.data.filter(dog => typeof dog.id === 'number')
+    const dbDog = dogs.data.filter(dog => !(dog.created !== undefined))
     dispatch(filterApi(dbDog))
   } catch (error) {
     console.log(error)
