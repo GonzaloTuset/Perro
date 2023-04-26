@@ -20,6 +20,7 @@ const getDogs = async () => {
     weight: dg.weight,
     height: dg.height,
     life_span: dg.life_span,
+    created:dg.createdAt,
     temperaments: dg.temperaments.map(temp => temp.name).join(', ')
   }));
   const apiDog = await axios.get(`${API}?api_key=${KEY}`)
