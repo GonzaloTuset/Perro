@@ -1,0 +1,14 @@
+.nav{
+  background-color: silver;
+  display: flex;
+  width: 25%;
+  justify-content: space-evenly;
+}
+.navLink1{
+  text-decoration: none;
+  color:black
+}
+.navLink2{
+  text-decoration: none;
+  color:black
+}

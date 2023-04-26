@@ -5,6 +5,8 @@ import { fetchData, filterDogApi, filterDogBdd, sortAsc, sortWeight} from '../..
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { formatImg } from "../../utils/FormatImg";
+import Style from './Cards.module.css'
+
 const Cards = () => {
   const dispatch = useDispatch()
   const selector = useSelector((state) => state.dogs)
@@ -67,17 +69,17 @@ const Cards = () => {
           Filter by Api
         </option>
       </select>
-      <div>
+      <div className={Style.cards}>
         {
           getCurrentDogs().
             map(({ id, name, temperaments, weight, image, reference }) => {
               return (
                 <NavLink to={`/Detail/${id}`}>
-                  <div key={id}>
-                    <img src={formatImg({ image, reference })} alt='img' />
-                    <h1>{name}</h1>
-                    <h2>{temperaments}</h2>
-                    <h3>{weight}</h3>
+                  <div className={Style.conteinerDiv} key={id}>
+                    <img  className={Style.img} src={formatImg({ image, reference })} alt='img' />
+                    <h1 className={Style.goDetail}>{name}</h1>
+                    <h2 className={Style.goDetail}>{temperaments}</h2>
+                    <h3 className={Style.goDetail}>{weight}</h3>
                   </div>
                 </NavLink>
               );

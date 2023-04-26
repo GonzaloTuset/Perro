@@ -1,14 +1,17 @@
-import React from "react";
+import React from "react"
 import NavBar from "../../NavBar/NavBar"
-import Cards from "../../Cards/Cards";
+import Cards from "../../Cards/Cards"
+import SearchBar from '../../SearchBar/SearchBar'
+import Style from './Home.module.css'
 
 const Home = () =>{
   return(
     <div>
-      <header>
+      <header className={Style.header}>
        <NavBar/>
+       <SearchBar/>
       </header>
-    <div>
+    <div >
       <Cards/>
     </div>
     

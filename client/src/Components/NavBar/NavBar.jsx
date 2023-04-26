@@ -1,12 +1,11 @@
 import { NavLink } from "react-router-dom"
-import SearchBar from "../SearchBar/SearchBar";
+import  Style from './NavBar.module.css'
 
 const NavBar = () => {
   return (
-    <div>
-      <NavLink to='/Home'>Home  </NavLink>
-    <NavLink to='/Form'>Form</NavLink>
-    <SearchBar/>
+    <div className={Style.nav}>
+      <NavLink className={Style.navLink1} to='/Home'>Home</NavLink>
+    <NavLink className={Style.navLink2} to='/Form'>Form</NavLink>
     </div>
   )
 }
