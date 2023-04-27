@@ -1,9 +1,7 @@
 require('dotenv').config()
 const { Dog, Temperaments } = require('../db')
 const axios = require('axios')
-const {
-  API, KEY
-} = process.env
+const { API, KEY } = process.env
 
 const getDogs = async () => {
   const dbDogs = await Dog.findAll({
@@ -12,7 +10,7 @@ const getDogs = async () => {
       attributes: ['name'],
       through: { attributes: [] }
     }
-  });
+  })
   const newDogsdb = dbDogs.map(dg => ({
     id: dg.id,
     name: dg.name,
@@ -20,24 +18,24 @@ const getDogs = async () => {
     weight: dg.weight,
     height: dg.height,
     life_span: dg.life_span,
-    created:dg.createdAt,
+    created: dg.createdAt,
     temperaments: dg.temperaments.map(temp => temp.name).join(', ')
-  }));
+  }))
   const apiDog = await axios.get(`${API}?api_key=${KEY}`)
     .then(response => {
-      const breeds = response.data.map(({id,image,name,temperament,weight}) => ({ 
+      const breeds = response.data.map(({ id, image, name, temperament, weight }) => ({
         id,
-        image:image.url, 
-        name, 
-        temperaments: temperament, 
-        weight:weight.imperial 
+        image: image.url,
+        name,
+        temperaments: temperament,
+        weight: weight.imperial
       }))
       if (breeds.length === 0) {
         throw new Error('Sin valores');
       }
       return breeds
     })
- const dogs= newDogsdb.concat(apiDog)
- return dogs
+  const dogs = newDogsdb.concat(apiDog)
+  return dogs
 }
 module.exports = getDogs

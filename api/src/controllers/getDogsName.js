@@ -16,7 +16,7 @@ const getDogsName = async (name) => {
       attributes: ['name'],
       through: { attributes: [] }
     }
-  });
+  })
 
   const apiResponse = await axios.get(`${API}/search?q=${name}&api_key=${KEY}`)
   .then(response => {
