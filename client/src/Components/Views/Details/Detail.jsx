@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import NavBar from "../../NavBar/NavBar"
 import { useEffect } from "react"
 import { formatImg } from  '../../../utils/FormatImg'
+import Style from './Detail.module.css'
 
 
 
@@ -16,12 +17,11 @@ const Detail = () => {
   },[id])
   return (
     <div>
-    <header>
+    <header className={Style.headerDetail}>
       <NavBar/>
     </header>
-   <div key={dogDetail.id}>
-    <h2>id: {dogDetail.id}</h2>
-    <img src = { formatImg(dogDetail) } alt = 'img'/>
+   <div className={Style.card} key={dogDetail.id}>
+    <img className={Style.img} src = { formatImg(dogDetail) } alt = 'img'/>
     <h2>name: {dogDetail.name}</h2>
     <h2>height: { dogDetail.height ? dogDetail.height : ('nada')}</h2>
     <h2>weight: {dogDetail.weight ? dogDetail.weight : ('nada')}</h2>

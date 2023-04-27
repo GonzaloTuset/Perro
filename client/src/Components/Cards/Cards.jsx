@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData, filterDogApi, filterDogBdd, sortAsc, sortWeight} from '../../redux/actions';
+import { fetchData} from '../../redux/actions';
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { formatImg } from "../../utils/FormatImg";
@@ -30,57 +30,20 @@ const Cards = () => {
   for (let i = 1; i <= Math.ceil(selector.length / dogsPerPage); i++) {
     pageNumbers.push(i)
   }
-  const HandleShow = () => {
-    dispatch(fetchData())
-  }
-  const asdWeight =(event)=>{
-    dispatch(sortWeight(event.target.value))
-  }
-  function ascOrder(event) {
-    dispatch(sortAsc(event.target.value))
-  }
-  const selectssd = (event) => {
-    if (event.target.value === 'bd') {
-      dispatch(filterDogBdd())
-    }
-    if (event.target.value === 'api') {
-      dispatch(filterDogApi())
-    }
-  }
+  
 
   return (
-    <div>
-      <select onChange={ascOrder}>
-        <option value='ASC'> ASC order</option>
-        <option value='DES'> DES order</option>
-
-      </select>
-      <select onChange={asdWeight}>
-        <option value='ASCENDENT'> ASC Weight </option>
-        <option value='DESCENDENT'> DES Weight </option>
-      </select>
-
-      <button onClick={HandleShow}>Show all</button>
-      <select onChange={selectssd}>
-        <option value={'bd'}>
-          Filter by BDD
-        </option>
-        <option value={'api'}>
-          Filter by Api
-        </option>
-      </select>
+    <div className={Style.backGround}>
       <div className={Style.cards}>
         {
           getCurrentDogs().
             map(({ id, name, temperaments, weight, image, reference }) => {
               return (
-                <NavLink to={`/Detail/${id}`}>
-                  <div className={Style.conteinerDiv} key={id}>
+                <NavLink key={id+name} className={Style.navLink} to={`/Detail/${id}`}>
                     <img  className={Style.img} src={formatImg({ image, reference })} alt='img' />
                     <h1 className={Style.goDetail}>{name}</h1>
                     <h2 className={Style.goDetail}>{temperaments}</h2>
                     <h3 className={Style.goDetail}>{weight}</h3>
-                  </div>
                 </NavLink>
               );
             })}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
+import styles from './DogForm.module.css'
 
 const CreateDogForm = () => {
   const [options, setOptions] = useState([])
@@ -47,40 +47,63 @@ const CreateDogForm = () => {
       return
     }
     axios.post('http://localhost:3001/dogs', newDog)
-    console.log('perro creado')
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name: </label>
-        <input autoFocus placeholder='name' type='text' name='name' />
-        <label htmlFor="image"> Image: </label>
-        <input name='image' />
-        <label htmlFor="Height"> Height: </label>
-        <input placeholder='min-height' type='number' name='minHeight' />-
-        <input placeholder='max-height' type='number' name='maxHeight' />
-        <label htmlFor="name"> Weight: </label>
-        <input placeholder='min-weight' type='number' name='minWeight' />-
-        <input placeholder='max-weight' type='number' name='maxWeight' />
-        <label htmlFor="name"> Life Spam: </label>
-        <input placeholder='life-Spam' type='number' name='years' />
-        <label htmlFor="name"> Temperaments: </label>
-        <select name="temp" onChange={selectTemp}>
-          {
-            options.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-        </select>
-        <button>crear nueva raza</button>
-      </form>
-      <br />
-      <div>
-          {temps.map((tmp, index)=> (
-            <span key={index}>{tmp}</span>
-          ))}
+    <div className={styles.container}>
+      <div className={styles.containerForm}>
+        <form onSubmit={handleSubmit} className={styles.form} >
+          <div className={styles.inputs}>
+            <label htmlFor="name">Name: </label>
+            <input autoFocus placeholder='name' type='text' name='name' />
+          </div>
+          <div className={styles.inputs}>
+            <label htmlFor="image"> Image: </label>
+            <input name='image' />
+          </div>
+          <div className={styles.inputs}>
+            <label htmlFor="Height"> Height: </label>
+            <div>
+              <input placeholder='min-height' type='number' name='minHeight' />-
+              <input placeholder='max-height' type='number' name='maxHeight' />
+            </div>
+          </div>
+          <div className={styles.inputs}>
+            <label htmlFor="name"> Weight: </label>
+            <div>
+              <input placeholder='min-weight' type='number' name='minWeight' />-
+              <input placeholder='max-weight' type='number' name='maxWeight' />
+            </div>
+          </div>
+          <div className={styles.inputs}>
+            <label htmlFor="name"> Life Spam: </label>
+            <input placeholder='life-Spam' type='number' name='years' />
+          </div>
+          <div className={styles.inputs}>
+            <label htmlFor="name"> Temperaments: </label>
+            <select name="temp" onChange={selectTemp}>
+              {
+                options.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <button>crear nueva raza</button>
+        </form>
+        <br />
+        <div className={styles.temperament}>
+            <h3>Temperaments</h3>
+            {
+              temps.length === 0 ? <span>You don't have tempreamentes selecteds</span>: null
+            }
+            <div className={styles.allTemperaments}>
+              {temps.map((tmp, index)=> (
+                <span key={index}>{tmp}</span>
+              ))}
+            </div>
+        </div>
       </div>
     </div>
   )
