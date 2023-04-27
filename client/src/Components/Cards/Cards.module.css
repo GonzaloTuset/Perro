@@ -21,7 +21,23 @@
 .goDetail{
   text-decoration: none;
   color:black;
-  max-height: 100px;
+  margin-bottom: 10px;
+}
+.goDetail1{
+  text-decoration: none;
+  color:black;
+  height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+ 
+}
+
+.giDetailName{
+  text-decoration: none;
+  color:black;
+  height: 130px;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }

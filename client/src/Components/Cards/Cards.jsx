@@ -41,9 +41,16 @@ const Cards = () => {
               return (
                 <NavLink key={id+name} className={Style.navLink} to={`/Detail/${id}`}>
                     <img  className={Style.img} src={formatImg({ image, reference })} alt='img' />
-                    <h1 className={Style.goDetail}>{name}</h1>
-                    <h2 className={Style.goDetail}>{temperaments}</h2>
-                    <h3 className={Style.goDetail}>{weight}</h3>
+                    <div className={Style.giDetailName}>
+                      <h1>{name}</h1>
+                    </div>
+                    <div className={Style.goDetail1}>
+                      <h2>{temperaments}</h2>
+                    </div>
+                    <div className={Style.goDetail}>
+                      <h3>{weight}</h3>
+                    </div>
+                    
                 </NavLink>
               );
             })}
