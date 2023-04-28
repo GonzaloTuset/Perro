@@ -5,18 +5,18 @@ import SearchBar from '../../SearchBar/SearchBar'
 import Style from './Home.module.css'
 import Options from "../../Options/Options"
 
-const Home = () =>{
-  return(
+const Home = () => {
+  return (
     <div>
       <header className={Style.header}>
-       <NavBar/>
-       <Options/>
-       <SearchBar/>
+        <NavBar />
+        <Options />
+        <SearchBar />
       </header>
-    <div >
-      <Cards/>
-    </div>
-    
+      <div >
+        <Cards />
+      </div>
+
     </div>
   )
 }

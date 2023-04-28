@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { fetchDog } from "../../redux/actions";
-import  Style  from './SearchBar.module.css';
+import Style from './SearchBar.module.css';
 
 const SearchBar = () => {
   const dispatch = useDispatch()
@@ -8,12 +8,12 @@ const SearchBar = () => {
     event.preventDefault();
     const search = event.currentTarget.search.value
     dispatch(fetchDog(search))
-   console.log(search)
+    console.log(search)
   }
 
   return (
     <form onSubmit={handleSearch}>
-      <input className={Style.input} placeholder="Search a dog..." type="search" name="search"/>
+      <input className={Style.input} placeholder="Search a dog..." type="search" name="search" />
       <button className={Style.button} type="submit">Search</button>
     </form>
   )
