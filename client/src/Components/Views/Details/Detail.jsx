@@ -49,7 +49,11 @@ const Detail = () => {
               </div>
             </div>
             <div className={Style.divimg}>
-              <img className={Style.imgPng} src="https://cdn.discordapp.com/attachments/957507192490180679/1101267598466895953/pngegg.png" />
+              {
+               Array.isArray(dogDetail.temperaments) ? dogDetail.temperaments.length < 12 ?<img className={Style.imgPng} src="https://cdn.discordapp.com/attachments/957507192490180679/1101267598466895953/pngegg.png" />:
+                null:
+                <img className={Style.imgPng} src="https://cdn.discordapp.com/attachments/957507192490180679/1101267598466895953/pngegg.png" />
+              }
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ export const FILTER_BY_API = 'FILTER_BY_API'
 export const SORT_BY_ASC = 'SORT_BY_ASC'
 export const SORT_BY_WEIGHT = 'SORT_BY_WEIGHT'
 export const CURRENT_PAGE = 'CURRENT_PAGE'
+export const TEMPERAMENTS = 'EMPERAMENTS'
 
 export const fetchDataSuccess = (data) => ({
   type: FETCH_DATA_SUCCESS,
@@ -35,7 +36,10 @@ export const currentPag = (data) => ({
   type: CURRENT_PAGE,
   payload: data,
 })
-
+export const filtTemp = (data) => ({
+  type: TEMPERAMENTS,
+  payload: data,
+})
 
 export const fetchData = () => async dispatch => {
   try {
@@ -71,11 +75,28 @@ export const filterDogBdd=()=>async dispatch=>{
 export const filterDogApi=()=>async dispatch=>{
   try {
     const dogs = await axios.get('http://localhost:3001/dogs')
-    console.log(dogs.data)
+    
     const dbDog = dogs.data.filter(dog => !(dog.created !== undefined))
     dispatch(filterApi(dbDog))
   } catch (error) {
     console.log(error)
   }
 }
+export const fetchDataTemp = (data) => async dispatch => {
+  try {
+    const response = await axios.get('http://localhost:3001/dogs');
+    if(data === '---'){
+      dispatch(filtTemp(response.data)); 
+    }
+    const filteredData = response.data.filter(dog => {
+      if(dog.temperaments){
+        return dog.temperaments.includes(data);
+      }
+      return false
+    })
+    dispatch(filtTemp(filteredData));
+  } catch (error) { 
+    console.log(error);
+  }
+};
 

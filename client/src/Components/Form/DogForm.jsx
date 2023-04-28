@@ -5,6 +5,7 @@ import Style from './DogForm.module.css'
 const CreateDogForm = () => {
   const [options, setOptions] = useState([])
   const [temps, setTemps] = useState([])
+  const[ createDog, setCreateDog] =useState('')
   useEffect(() => {
     const fetchOptions = async () => {
       const response = await axios.get('http://localhost:3001/temperaments');
@@ -15,6 +16,7 @@ const CreateDogForm = () => {
 
     fetchOptions();
   }, []);
+  
 
   const selectTemp = (event) => {
     if(temps.includes(event.target.value)){
@@ -23,6 +25,7 @@ const CreateDogForm = () => {
     setTemps([...temps, event.target.value])
   }
   const handleSubmit = (event) => {
+    setCreateDog('perro creado')
     event.preventDefault()
     const { name, years, image, minHeight, minWeight, maxHeight, maxWeight } = event.currentTarget
     const newDog = {
@@ -31,8 +34,9 @@ const CreateDogForm = () => {
       weight: minWeight.value + ' - ' + maxWeight.value,
       years: years.value + ' Years',
       temperaments: temps,
-      image: image.value
+      image: image.value,
     }
+    
     if(!name.value){
       alert('El nombre no puede estar vacio')
     }
@@ -104,7 +108,7 @@ const CreateDogForm = () => {
         <div className={Style.temperament}>
             <h3>Temperaments</h3>
             {
-              temps.length === 0 ? <span>You don't have tempreamentes selecteds</span>: null
+              temps.length === 0 ? <span>You don't have temperamentes selected</span>: null
             }
             <div className={Style.allTemperaments}>
               {temps.map((tmp, index)=> (
@@ -114,6 +118,9 @@ const CreateDogForm = () => {
               ))}
             </div>
         </div>
+      </div>
+      <div className={createDog ? Style.createdDog : undefined}>
+        <h4>{createDog}</h4>
       </div>
     </div>
   )

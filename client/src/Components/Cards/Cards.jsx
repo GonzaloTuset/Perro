@@ -45,10 +45,10 @@ const Cards = () => {
                   
                     <img  className={Style.img} src={formatImg({ image, reference })} alt='img' />
                     <div className={Style.giDetailName}>
-                      <h1>{name}</h1>
+                      <h2 className={Style.title}>{name}</h2>
                     </div>
                     <div className={Style.goDetail1}>
-                      <h2>{temperaments}</h2>
+                      <h3 className={Style.temperamentName}>{temperaments}</h3>
                     </div>
                     <div className={Style.goDetail}>
                       <h3>{weight}</h3>

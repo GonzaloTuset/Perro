@@ -5,7 +5,8 @@ import {
   FILTER_BY_API,
   SORT_BY_ASC,
   SORT_BY_WEIGHT,
-  CURRENT_PAGE
+  CURRENT_PAGE,
+  TEMPERAMENTS
 } from './actions';
 
 const initialState = {
@@ -82,6 +83,11 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             currentPage: action.payload
           }
+          case TEMPERAMENTS:
+            return{
+              ...state,
+              dogs:action.payload,
+            }
     default:
       return { ...state }
 

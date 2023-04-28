@@ -5,7 +5,7 @@ const Landing = () =>{
  <div className={Style.img}>
   <div className={Style.container}>
     <Link to='/Home'>
-    <button className={Style.button}> GO HOME </button>
+    <button className={Style.button}> <h3 className={Style.h3}>BIENVENIDO</h3></button>
     </Link>
     
   </div>
