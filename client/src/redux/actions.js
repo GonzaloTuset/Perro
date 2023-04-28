@@ -5,6 +5,7 @@ export const FILTER_BY_BDD = 'FILTER_BY_BDD'
 export const FILTER_BY_API = 'FILTER_BY_API'
 export const SORT_BY_ASC = 'SORT_BY_ASC'
 export const SORT_BY_WEIGHT = 'SORT_BY_WEIGHT'
+export const CURRENT_PAGE = 'CURRENT_PAGE'
 
 export const fetchDataSuccess = (data) => ({
   type: FETCH_DATA_SUCCESS,
@@ -30,6 +31,11 @@ export const sortWeight = (data) => ({
   type: SORT_BY_WEIGHT,
   payload: data
 })
+export const currentPag = (data) => ({
+  type: CURRENT_PAGE,
+  payload: data,
+})
+
 
 export const fetchData = () => async dispatch => {
   try {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import styles from './DogForm.module.css'
+import Style from './DogForm.module.css'
 
 const CreateDogForm = () => {
   const [options, setOptions] = useState([])
@@ -24,62 +24,70 @@ const CreateDogForm = () => {
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    const regex = new RegExp('^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,5}(:[0-9]{1,5})?(\/.*)?$')
     const { name, years, image, minHeight, minWeight, maxHeight, maxWeight } = event.currentTarget
     const newDog = {
       name: name.value,
       height: minHeight.value + ' - ' + maxHeight.value,
       weight: minWeight.value + ' - ' + maxWeight.value,
-      years: years.value,
+      years: years.value + ' Years',
       temperaments: temps,
       image: image.value
     }
+    if(!name.value){
+      alert('El nombre no puede estar vacio')
+    }
     if (minHeight.value > maxHeight.value) {
       alert('el valor de minHeight no puede ser mayor al de maxHeight')
+      return
+    }else if(minHeight.value === maxHeight.value){
+      alert('el valor de minHeight no puede ser igual al de maxHeight')
       return
     }
     if (minWeight.value > maxWeight.value) {
       alert('el valor de minWeight no puede ser mayor al de maxWeight')
       return
+    }else if(minWeight.value === maxWeight.value){
+      alert('el valor de minHeight no puede ser igual al de maxHeight')
+      return
     }
-    if (!regex.test(image.value)) {
-      alert('tiene que ser una URl si o si')
+    if (!image.value.includes('http')) {
+      alert('tiene que ser una URl')
       return
     }
     axios.post('http://localhost:3001/dogs', newDog)
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.containerForm}>
-        <form onSubmit={handleSubmit} className={styles.form} >
-          <div className={styles.inputs}>
+    <div className={Style.container}>
+      <div className={Style.containerForm}>
+        <form onSubmit={handleSubmit} className={Style.form} >
+          <div className={Style.inputs}>
             <label htmlFor="name">Name: </label>
             <input autoFocus placeholder='name' type='text' name='name' />
           </div>
-          <div className={styles.inputs}>
+          <div className={Style.inputs}>
             <label htmlFor="image"> Image: </label>
             <input name='image' />
           </div>
-          <div className={styles.inputs}>
+          <div className={Style.inputs}>
             <label htmlFor="Height"> Height: </label>
             <div>
               <input placeholder='min-height' type='number' name='minHeight' />-
               <input placeholder='max-height' type='number' name='maxHeight' />
             </div>
           </div>
-          <div className={styles.inputs}>
+          <div className={Style.inputs}>
             <label htmlFor="name"> Weight: </label>
             <div>
-              <input placeholder='min-weight' type='number' name='minWeight' />-
+              <input placeholder='min-weight' type='number' name='minWeight' /> -
               <input placeholder='max-weight' type='number' name='maxWeight' />
             </div>
           </div>
-          <div className={styles.inputs}>
+          <div className={Style.inputs}>
             <label htmlFor="name"> Life Spam: </label>
             <input placeholder='life-Spam' type='number' name='years' />
           </div>
-          <div className={styles.inputs}>
+          <div className={Style.inputs}>
             <label htmlFor="name"> Temperaments: </label>
             <select name="temp" onChange={selectTemp}>
               {
@@ -90,17 +98,19 @@ const CreateDogForm = () => {
                 ))}
             </select>
           </div>
-          <button>crear nueva raza</button>
+          <button> Create a new Dog </button>
         </form>
         <br />
-        <div className={styles.temperament}>
+        <div className={Style.temperament}>
             <h3>Temperaments</h3>
             {
               temps.length === 0 ? <span>You don't have tempreamentes selecteds</span>: null
             }
-            <div className={styles.allTemperaments}>
+            <div className={Style.allTemperaments}>
               {temps.map((tmp, index)=> (
-                <span key={index}>{tmp}</span>
+                
+                <span className={Style.temp} key={index}>{tmp}</span>
+                
               ))}
             </div>
         </div>

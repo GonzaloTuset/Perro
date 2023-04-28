@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 const Landing = () =>{ 
   return (
  <div className={Style.img}>
-  <div>
+  <div className={Style.container}>
     <Link to='/Home'>
-    <button >HOME</button>
+    <button className={Style.button}> GO HOME </button>
     </Link>
     
   </div>

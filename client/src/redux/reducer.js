@@ -4,11 +4,13 @@ import {
   FILTER_BY_BDD,
   FILTER_BY_API,
   SORT_BY_ASC,
-  SORT_BY_WEIGHT
+  SORT_BY_WEIGHT,
+  CURRENT_PAGE
 } from './actions';
 
 const initialState = {
   dogs: [],
+  currentPage:1,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -75,6 +77,11 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           dogs: orderWeight,
         }
+        case CURRENT_PAGE:
+          return {
+            ...state,
+            currentPage: action.payload
+          }
     default:
       return { ...state }
 

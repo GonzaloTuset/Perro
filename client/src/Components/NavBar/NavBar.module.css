@@ -1,5 +1,5 @@
 .nav{
-  background-color: silver;
+  background-color: burlywood;
   display: flex;
   width: 25%;
   justify-content: space-evenly;
@@ -8,7 +8,15 @@
   text-decoration: none;
   color:black
 }
+.navLink1:hover{
+  color: black;
+  font-weight: bold;
+}
 .navLink2{
   text-decoration: none;
   color:black
+}
+.navLink2:hover{
+  color: black;
+  font-weight: bold;
 }

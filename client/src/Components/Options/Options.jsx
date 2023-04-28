@@ -1,5 +1,5 @@
 
-import {fetchData, filterDogApi, filterDogBdd, sortAsc, sortWeight} from '../../redux/actions';
+import {currentPag, fetchData, filterDogApi, filterDogBdd, sortAsc, sortWeight} from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 const Options = () =>{
@@ -17,9 +17,11 @@ const Options = () =>{
   const selectssd = (event) => {
     if (event.target.value === 'bd') {
       dispatch(filterDogBdd())
+      dispatch(currentPag(1))
     }
     if (event.target.value === 'api') {
       dispatch(filterDogApi())
+      dispatch(currentPag(1))
     }
   }
   return(

@@ -14,7 +14,7 @@ const SearchBar = () => {
   return (
     <form onSubmit={handleSearch}>
       <input className={Style.input} placeholder="Search a dog..." type="search" name="search"/>
-      <button type="submit">Search</button>
+      <button className={Style.button} type="submit">Search</button>
     </form>
   )
 }

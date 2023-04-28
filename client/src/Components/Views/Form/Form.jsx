@@ -1,12 +1,13 @@
-import CreateDogForm from "../../Form/DogForm"
-import NavBar from "../../NavBar/NavBar"
+import CreateDogForm from '../../Form/DogForm'
+import NavBar from '../../NavBar/NavBar'
+import  Style  from './Form.module.css'
 const Form = () => {
   return (
     <div>
-    <header>
+    <header className={Style.header}>
     <NavBar/>
    </header>
-   <h1>Crea tu propio perro </h1>
+   <h1> Create your own dog </h1>
    <CreateDogForm/>
    </div>
     

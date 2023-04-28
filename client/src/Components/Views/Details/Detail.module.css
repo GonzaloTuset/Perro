@@ -1,5 +1,5 @@
 .headerDetail{
-  background-color: silver;
+  background-color: burlywood;
   display: flex;
   width: 100%;
   height: 50px;
@@ -7,10 +7,84 @@
   justify-content: space-evenly;
 }
 .card{
-  background-color: burlywood;
+  width: 90%;
+  min-height: 600px;
+  max-width: 1200px;
   display: flex;
-
+  align-items: center;
+  justify-content: center;
+  background-color: burlywood;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 .img{
   max-height: 300px;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.div{
+  width: 100%;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgDiv{
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 17px;
+  margin-left: 17px;
+  margin-bottom: 0;
+}
+.divTemp{
+  height: 600px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 100px;
+}
+.tempSquare {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #c3e6cb;
+  color: #155724;
+  font-weight: bold;
+  justify-content: center;
+}
+.tempera{
+  display: flex;
+  width: 600px;
+  max-height: 100%;
+  justify-content: center;
+}
+.tempContainer{
+  width: 600px;
+  display: flex;
+  justify-content: center;
+}
+.imgPng{
+  max-width: 50%;
+  max-height: 50%;
+}
+.divimg{
+  display: flex;
+  height: 600px;
+  width: 600px;
+  align-items: center;
+  justify-content: center;
+  
+}
+.divImg2{
+  display: flex;
+  width: 420px;
+  justify-content: center;
 }
