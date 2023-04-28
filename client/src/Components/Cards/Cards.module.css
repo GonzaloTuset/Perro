@@ -94,3 +94,10 @@
   background-color: blanchedalmond;
   color: black;
 }
+
+.BottonSelected{
+  margin-left: 10px;
+  background-color: blanchedalmond !important;
+  border-radius: 5px;
+  margin-left: 10px;
+}

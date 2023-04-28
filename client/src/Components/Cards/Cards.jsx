@@ -3,7 +3,6 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData, currentPag} from '../../redux/actions';
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import { formatImg } from "../../utils/FormatImg";
 import Style from './Cards.module.css'
 
@@ -32,8 +31,6 @@ const Cards = () => {
     }
   }
  
-  
-
   return (
     <div className={Style.backGround}>
       <div className={Style.cards}>
@@ -61,7 +58,7 @@ const Cards = () => {
       <div>
         {
         pageNumbers.map((number) => (
-          <button className={Style.Botton} key={number} onClick={() => dispatch(currentPag(number))}>
+          <button className={currentPage  === number  ? Style.BottonSelected : Style.Botton} key={number} onClick={() => dispatch(currentPag(number))}>
             {number}
           </button>
         ))}

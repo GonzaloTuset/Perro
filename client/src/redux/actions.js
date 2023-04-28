@@ -86,7 +86,7 @@ export const fetchDataTemp = (data) => async dispatch => {
   try {
     const response = await axios.get('http://localhost:3001/dogs');
     if(data === '---'){
-      dispatch(filtTemp(response.data)); 
+      return 
     }
     const filteredData = response.data.filter(dog => {
       if(dog.temperaments){

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import {currentPag, fetchData, fetchDataTemp, filterDogApi, filterDogBdd, sortAsc, sortWeight} from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import style from './Options.modules.css'
+import Style from './Options.modules.css'
 
 const Options = () =>{
 
@@ -11,14 +11,14 @@ const Options = () =>{
   
   useEffect(() => {
     const fetchOptions = async () => {
-        const response = await axios.get('http://localhost:3001/temperaments');
+        const response = await axios.get('http://localhost:3001/temperaments')
         setOptions(response.data.map(options =>
           options.name
-        ));
-      };
+        ))
+      }
   
-      fetchOptions();
-    }, []);
+      fetchOptions()
+    }, [])
 
     const selectTemp = (event) => {
       const newTemp = event.target.value;
@@ -26,7 +26,7 @@ const Options = () =>{
       dispatch(currentPag(1))
     };
   
-  const HandleShow = () => {
+  const handleShow = () => {
     dispatch(fetchData())
   }
   
@@ -49,19 +49,22 @@ const Options = () =>{
     }
   }
   return(
-    <div className={style.container}>
+    <div className={Style.container}>
       <select onChange={ascOrder}>
+        <option value='--'>alfabetic</option>
         <option value='ASC'> A - Z</option>
         <option value='DES'> Z - A </option>
 
       </select>
       <select onChange={asdWeight}>
+        <option value='--'>ASC / DESC</option>
         <option value='ASCENDENT'> ASC Weight </option>
-        <option value='DESCENDENT'> DES Weight </option>
+        <option value='DESCENDENT'> DESC Weight </option>
       </select>
 
-      <button onClick={HandleShow}>Show all</button>
+      <button  className={Style.button} onClick={handleShow}>Show all</button>
       <select onChange={selectssd}>
+      <option value='--'>BDD / API</option>
         <option value={'bd'}>
           Filter by BDD
         </option>

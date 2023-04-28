@@ -24,9 +24,9 @@ const CreateDogForm = () => {
     }
     setTemps([...temps, event.target.value])
   }
-  const handleSubmit = (event) => {
-    setCreateDog('perro creado')
+  const handleSubmit =  async (event) => {
     event.preventDefault()
+    
     const { name, years, image, minHeight, minWeight, maxHeight, maxWeight } = event.currentTarget
     const newDog = {
       name: name.value,
@@ -39,7 +39,15 @@ const CreateDogForm = () => {
     
     if(!name.value){
       alert('El nombre no puede estar vacio')
+      return
     }
+
+   
+      if (!image.value.includes('http')) {
+        alert('Debe ingresar una URL')
+        return
+      }
+    
     if (minHeight.value > maxHeight.value) {
       alert('el valor de minHeight no puede ser mayor al de maxHeight')
       return
@@ -54,11 +62,8 @@ const CreateDogForm = () => {
       alert('el valor de minHeight no puede ser igual al de maxHeight')
       return
     }
-    if (!image.value.includes('http')) {
-      alert('tiene que ser una URl')
-      return
-    }
-    axios.post('http://localhost:3001/dogs', newDog)
+    await axios.post('http://localhost:3001/dogs', newDog)
+    setCreateDog('Dog created')
   }
 
   return (
@@ -71,7 +76,7 @@ const CreateDogForm = () => {
           </div>
           <div className={Style.inputs}>
             <label htmlFor="image"> Image: </label>
-            <input name='image' />
+            <input placeholder='enter URL' name='image' />
           </div>
           <div className={Style.inputs}>
             <label htmlFor="Height"> Height: </label>
